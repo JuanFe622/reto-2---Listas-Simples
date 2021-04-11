@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <!-- Compiled and minified JavaScript -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+	<title>Document</title>
+</head>
+<body>
+	<div class="container section">
+		<table class="striped">
+			<thead>
+				<!-- Insertar 1 fila con categorias -->
+				<tr>
+					<th>Fuente</th>
+					<th>Valores de los nodos</th>
+				</tr>
+			</thead>
+			<!-- Registros de la tabla -->
+			<body>
+				<!-- Fila 1: Muestra info de un sólo registro -->
+				<tr>
+					<td>
+						<label>Cargar valores por defecto</label>
+					</td>
+					<td>
+						<output id="ListaPorDefault"></output>
+					</td>
+				</tr>
+				<!-- Fila 2 : Solicitar valores ingresador por el usuario-->
+				<tr>
+					<td>
+						<div class="input-field">
+							<input type="text" name="nodos" id="nodos">
+							<label for="nodos">Ingrese los valores separados por ","</label>
+						</div>
+					</td>
+					<td>
+						<!-- Crear boton sin texto, solo icono -->
+						<a class="btn-floating btn-large waves-effect waves-light blue" onclick="capturaValorInput()">
+                            <i class="material-icons">add</i>
+                        </a>
+						<output id="nodosIngresados"></output>
+					</td>
+				</tr>
+				<!-- Fila 3 -->
+				<tr>
+                    <td>
+                        <!-- Crear botón para el cargue de multiples imagenes -->
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Cargar imgs</span>
+                                <input type="file" name="files[]" id="files" multiple>
+                            </div>
+                            <!-- Muestra el nombre de las imagenes seleccionadas -->
+                            <div class="file-path-wrapper">
+                                <input type="text" name="nombreImgs" id="nombreImgs" class="file-path validate">
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <output id="list"></output>
+                    </td>
+                </tr>
+				<!-- Fila 4 -->
+				<tr>
+					<td>
+						<!-- campo input:file -->
+							<div class="file-field input-field">
+						    <div class="btn">
+						       	<span>Archivo</span>
+						       	<input type="file" id="myInput">
+						    </div>
+						    <div class="file-path-wrapper">
+						       	<input class="file-path validate" type="text">
+						    </div>
+						</div>
+					</td>
+					<td>
+						<label>Contenido del archivo:</label>
+						<output id="ver"></output>
+					</td>
+				</tr>
+			</body>
+		</table>
+
+		<!-- Sección del boton -->
+		<div class="section">
+			<div class="row center">
+				<div class="col s12">
+					<button class="btn waves-effect waves-light btn-large" onclick="crearlista()">Crear Lista</button>
+				</div>
+			</div>
+		</div>
+
+		<output id="listaCreada"></output>
+
+		<!-- Lista desplegable -->
+		<div class="section">
+			<div class="row">
+				<div class="col s8">
+					<select class="browser-default" name="functionSelected" id="functionSelected">
+						<option value="" disabled selected>Seleccione una opción</option>
+						<option value="1">Añadir nodo</option>
+						<option value="2">Eliminar nodo</option>
+						<option value="3">Consultar valor nodo</option>
+						<option value="4">Eliminar nodo por determinado posición</option>
+						<option value="5">Eliminar nodo por valor</option>
+						<option value="6">Modificar valor de un nodo determinado</option>
+						<option value="7">Añadir nodo en determinada posición</option>
+						<option value="8">Invertir orden de la lista</option>
+					</select>
+				</div>
+				<div class="col s4">
+					<p>
+						<label>
+	                        <input name="group1" type="radio" id="inicioLista" checked   />
+	                        <span>Inicio de la lista</span>
+                    	</label>
+					</p>
+
+					<p>
+						<label>
+	                        <input name="group1" type="radio" id="finalLista" checked  />
+	                        <span>Al final de la lista</span>
+                    	</label>
+					</p>
+				</div>
+				<!-- Parametros métodos de listas simples -->
+				<div class="row center">
+					<div class="col s8">
+						<input type="text" name="valorN" id="valorN">
+						<label for="valorN">valor nodo</label>
+					</div>
+					<div class="col s4">
+						<input type="number" name="posicionN" id="posicionN">
+						<label for="posicionN">Posición nodo</label>
+					</div>
+				</div>
+			</div>
+
+			<!-- Sección de aceptar y mostrar lista resultante -->
+			<div class="section">
+				<div class="row center">
+					<div class="col s12">
+						<button class="btn waves-effect waves-light btn-large" onclick="validarOpcionLista()">Ver lista resultante</button>
+					</div>
+				</div>
+			</div>
+
+			<output id="listaActualizada"></output>
+
+		</div>
+	</div>
+	<script src="listasEnlazadas.js"></script>
+</body>
+</html>
